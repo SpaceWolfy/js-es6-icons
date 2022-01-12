@@ -116,7 +116,7 @@ const boxes = [
 /* Functions */
 function createHtmlElement(element, classObj) {
   return ` 
-  <div class="box ${classObj.type}">
+  <div class="box ${classObj.type} col-2">
     <div class="icon-space ${element.family} ${element.prefix}${element.name} color-${element.color}"></div>
     <div class="name-space"><strong>${element.name}</strong></div>
   </div>

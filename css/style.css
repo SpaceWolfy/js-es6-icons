@@ -8,18 +8,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.container-boxes {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .box {
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  box-shadow: 10px 10px 5px #dedede, inset 1px 1px 3px #dedede;
   border-radius: 10px;
-  width: 160px;
+  padding: 20px 0;
+  margin: 21px;
   text-align: center;
-  margin: 30px;
-  padding: 20px 0 20px 0;
 }
 
 .icon-space {
@@ -30,13 +25,22 @@ body {
 /* Header */
 .title-header {
   font-size: 40px;
+  font-family: "Mochiy Pop P One", sans-serif;
+  color: rgb(16, 219, 219);
 }
 
 .colorbox-header {
   background-color: rgb(16, 219, 219);
   height: 70px;
-  text-align: center;
-  line-height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header span {
+  color: white;
+  font-size: 20px;
+  margin-right: 10px;
+  font-weight: 500;
 }
 /* --------------------- */
 
