@@ -113,29 +113,39 @@ const boxes = [
   },
 ];
 
+/* Functions */
 function createHtmlElement(element, classObj) {
   return ` 
   <div class="box ${classObj.type}">
     <div class="icon-space ${element.family} ${element.prefix}${element.name} color-${element.color}"></div>
-    <div class="name-space">${element.name}</div>
+    <div class="name-space"><strong>${element.name}</strong></div>
   </div>
   `;
 }
 
-function selectElement(id, valueToSelect) {
-  let element = document.querySelectorAll(id);
-  element.value = valueToSelect;
+/* RandomColorSelector */
+function randomColorGenerator() {
+  //16777215 è il numero di colori esistenti in rgb dal nero (#000000), al bianco (#ffffff)
+  let colorGen = "#" + Math.floor(Math.random() * 16777215).toString(16);
+  return colorGen;
 }
+/* ------------------- */
 
+/* -------------------------------------------------------------------------------------------- */
+
+/* ForEach - Print on page */
 let outputHtmlContainer = document.querySelector(".container-boxes");
 
-boxes.forEach((icon) => {
-  outputHtmlContainer.innerHTML += createHtmlElement(icon, icon);
+boxes.forEach((boxOfIcon) => {
+  outputHtmlContainer.innerHTML += createHtmlElement(boxOfIcon, boxOfIcon);
 });
+/* ---------------------------- */
 
 const selectHtml = document.getElementById("select-category-item");
 
 selectHtml.addEventListener("change", function () {
+  /* addEventListener - variables setted*/
+
   let userVegetableDel = document.querySelectorAll("div.user, div.vegetable");
 
   let animalVegetableDel = document.querySelectorAll(
@@ -147,7 +157,9 @@ selectHtml.addEventListener("change", function () {
   let allSelect = document.querySelectorAll(
     "div.user, div.animal, div.vegetable"
   );
+  /* ------------------------------------- */
 
+  /* addEventListener - conditions */
   if (selectHtml.value == "animal") {
     for (let i = 0; i < userVegetableDel.length; i++) {
       userAnimalDel[i].classList.remove("displaynone");
@@ -166,6 +178,16 @@ selectHtml.addEventListener("change", function () {
   } else {
     for (let i = 0; i < animalVegetableDel.length; i++) {
       allSelect[i].classList.remove("displaynone");
+      userAnimalDel[i].classList.remove("displaynone");
     }
   }
+  /* ---------------------------------------------- */
 });
+
+//Bonus
+for (let i = 0; i < boxes.length; i++) {
+  outputHtmlContainer = document.querySelectorAll(".box");
+  outputHtmlContainer[i].style.color = randomColorGenerator();
+  outputHtmlContainer = document.querySelectorAll(".icon-space");
+  outputHtmlContainer[i].style.color = randomColorGenerator();
+}
