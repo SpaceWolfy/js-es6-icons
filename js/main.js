@@ -113,23 +113,59 @@ const boxes = [
   },
 ];
 
-function createHtmlElement(element) {
+function createHtmlElement(element, classObj) {
   return ` 
-  <div class="box">
+  <div class="box ${classObj.type}">
     <div class="icon-space ${element.family} ${element.prefix}${element.name} color-${element.color}"></div>
     <div class="name-space">${element.name}</div>
   </div>
   `;
 }
 
-const outputHtmlContainer = document.querySelector(".container-boxes");
+function selectElement(id, valueToSelect) {
+  let element = document.querySelectorAll(id);
+  element.value = valueToSelect;
+}
+
+let outputHtmlContainer = document.querySelector(".container-boxes");
 
 boxes.forEach((icon) => {
-  outputHtmlContainer.innerHTML += createHtmlElement(icon);
+  outputHtmlContainer.innerHTML += createHtmlElement(icon, icon);
 });
 
-/* con il for: */
-/* for (let i = 0; i < boxes.length; i++) {
-  let singleBox = boxes[i];
-  let createABox = createHtmlElement(singleBox);
-} */
+const selectHtml = document.getElementById("select-category-item");
+
+selectHtml.addEventListener("change", function () {
+  let userVegetableDel = document.querySelectorAll("div.user, div.vegetable");
+
+  let animalVegetableDel = document.querySelectorAll(
+    "div.animal, div.vegetable"
+  );
+
+  let userAnimalDel = document.querySelectorAll("div.user, div.animal");
+
+  let allSelect = document.querySelectorAll(
+    "div.user, div.animal, div.vegetable"
+  );
+
+  if (selectHtml.value == "animal") {
+    for (let i = 0; i < userVegetableDel.length; i++) {
+      userAnimalDel[i].classList.remove("displaynone");
+      userVegetableDel[i].classList.add("displaynone");
+    }
+  } else if (selectHtml.value == "vegetable") {
+    for (let i = 0; i < userAnimalDel.length; i++) {
+      animalVegetableDel[i].classList.remove("displaynone");
+      userAnimalDel[i].classList.add("displaynone");
+    }
+  } else if (selectHtml.value == "user") {
+    for (let i = 0; i < animalVegetableDel.length; i++) {
+      userAnimalDel[i].classList.remove("displaynone");
+      animalVegetableDel[i].classList.add("displaynone");
+    }
+  } else {
+    for (let i = 0; i < animalVegetableDel.length; i++) {
+      allSelect[i].classList.remove("displaynone");
+    }
+  }
+});

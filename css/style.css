@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .container-boxes {
   display: flex;
   flex-wrap: wrap;
@@ -14,14 +18,27 @@
   border-radius: 10px;
   width: 160px;
   text-align: center;
-  padding: 20px 0 20px 0;
   margin: 30px;
+  padding: 20px 0 20px 0;
 }
 
 .icon-space {
   font-size: 30px;
   margin-bottom: 5px;
 }
+
+/* Header */
+.title-header {
+  font-size: 40px;
+}
+
+.colorbox-header {
+  background-color: rgb(16, 219, 219);
+  height: 70px;
+  text-align: center;
+  line-height: 70px;
+}
+/* --------------------- */
 
 /* ------------------------------------- */
 .color-blue {
@@ -34,4 +51,8 @@
 
 .color-green {
   color: rgb(90, 225, 0);
+}
+
+.displaynone {
+  display: none;
 }
